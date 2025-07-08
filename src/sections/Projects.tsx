@@ -48,6 +48,8 @@ const projects: Array<{
   }
 ];
 
+import type { Variants } from 'framer-motion';
+
 const containerVariants = {
   hidden: { opacity: 0 },
   visible: {
@@ -59,7 +61,7 @@ const containerVariants = {
   },
 };
 
-const cardVariants = {
+const cardVariants: Variants = {
   hidden: { 
     opacity: 0, 
     y: 50,

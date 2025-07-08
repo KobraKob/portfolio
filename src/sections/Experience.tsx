@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import type { Variants } from 'framer-motion';
 import { MapPin, Calendar, TrendingUp, Code, Database, Award } from 'lucide-react';
 
 // Define the type for experience type
@@ -70,7 +71,7 @@ const experiences: Array<{
   }
 ];
 
-const containerVariants = {
+const containerVariants: Variants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
@@ -81,23 +82,19 @@ const containerVariants = {
   },
 };
 
-const timelineVariants = {
+const timelineVariants: Variants = {
   hidden: { scaleY: 0 },
   visible: {
     scaleY: 1,
     transition: {
-      duration: 1.5,
-      ease: "easeInOut",
-    },
-  },
+      duration: 0.5,
+      ease: "easeInOut"
+    }
+  }
 };
 
-const itemVariants = {
-  hidden: {
-    opacity: 0,
-    x: -50,
-    scale: 0.8
-  },
+const itemVariants: Variants = {
+  hidden: { opacity: 0, x: -20, scale: 0.8 },
   visible: {
     opacity: 1,
     x: 0,
@@ -105,9 +102,9 @@ const itemVariants = {
     transition: {
       type: "spring",
       stiffness: 100,
-      damping: 15,
-    },
-  },
+      damping: 15
+    }
+  }
 };
 
 const TypeBadge = ({ type }: { type: ExperienceType }) => {

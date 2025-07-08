@@ -1,15 +1,16 @@
 import { motion } from 'framer-motion';
 import { ArrowDown, Download, Eye, Github, Linkedin, Mail } from 'lucide-react';
+import type { Variants } from 'framer-motion';
 
 export const Hero = () => {
-  const handleScrollToProjects = (e: React.MouseEvent<HTMLButtonElement | HTMLDivElement>) => {
+  const handleScrollToProjects = () => {
     const element = document.querySelector('#projects');
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
     }
   };
 
-  const handleDownloadResume = (e: React.MouseEvent<HTMLButtonElement>) => {
+  const handleDownloadResume = () => {
     const resumeUrl = '/balavanth_resume.pdf';
     const link = document.createElement('a');
     link.href = resumeUrl;
@@ -17,7 +18,7 @@ export const Hero = () => {
     link.click();
   };
 
-  const containerVariants = {
+  const containerVariants: Variants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
@@ -28,7 +29,7 @@ export const Hero = () => {
     }
   };
 
-  const itemVariants = {
+  const itemVariants: Variants = {
     hidden: { opacity: 0, y: 20 },
     visible: {
       opacity: 1,
