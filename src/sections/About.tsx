@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import type { Variants } from 'framer-motion';
 import { SiPython, SiJavascript, SiReact, SiTailwindcss, SiMysql, SiTableau, SiGithub } from 'react-icons/si';
 
 const skills = [
@@ -11,7 +12,7 @@ const skills = [
   { icon: <SiGithub size={32} />, name: 'GitHub', color: '#181717' },
 ];
 
-const containerVariants = {
+const containerVariants: Variants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
@@ -22,13 +23,13 @@ const containerVariants = {
   },
 };
 
-const itemVariants = {
+const itemVariants: Variants = {
   hidden: { y: 20, opacity: 0 },
   visible: {
     y: 0,
     opacity: 1,
     transition: {
-      type: "spring",
+      type: 'spring',
       stiffness: 100,
     },
   },

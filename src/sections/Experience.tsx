@@ -1,7 +1,22 @@
 import { motion } from 'framer-motion';
-import { MapPin, Calendar, TrendingUp, Code, Database, Users, Award } from 'lucide-react';
+import { MapPin, Calendar, TrendingUp, Code, Database, Award } from 'lucide-react';
 
-const experiences = [
+// Define the type for experience type
+type ExperienceType = 'Internship' | 'Full-time' | 'Contract';
+
+const experiences: Array<{
+  id: number;
+  title: string;
+  company: string;
+  location: string;
+  duration: string;
+  type: ExperienceType;
+  description: string;
+  achievements: string[];
+  skills: string[];
+  icon: React.ReactNode;
+  gradient: string;
+}> = [
   {
     id: 1,
     title: "Graduate Trainee",
@@ -95,14 +110,15 @@ const itemVariants = {
   },
 };
 
-const TypeBadge = ({ type }) => {
+const TypeBadge = ({ type }: { type: ExperienceType }) => {
   const typeStyles = {
-    "Internship": "bg-blue-500/20 text-blue-400 border-blue-500/30",
-    "Full-time": "bg-green-500/20 text-green-400 border-green-500/30",
-    "Contract": "bg-purple-500/20 text-purple-400 border-purple-500/30"
+    Internship: 'bg-blue-100 text-blue-800 border border-blue-200',
+    'Full-time': 'bg-green-100 text-green-800 border border-green-200',
+    Contract: 'bg-purple-100 text-purple-800 border border-purple-200',
   };
+
   return (
-    <span className={`px-3 py-1 rounded-full text-xs font-medium border ${typeStyles[type]}`}>
+    <span className={`px-2 py-1 text-xs font-medium rounded-full ${typeStyles[type]}`}>
       {type}
     </span>
   );

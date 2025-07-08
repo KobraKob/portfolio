@@ -41,7 +41,7 @@ export const Navbar = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const handleNavClick = (href) => {
+  const handleNavClick = (href: string) => {
     setIsOpen(false);
     
     // Smooth scroll to section

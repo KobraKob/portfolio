@@ -1,9 +1,20 @@
+import * as React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useState } from 'react';
-import { SiReact, SiPython, SiPhp, SiMysql } from 'react-icons/si';
-import { ExternalLink, ChevronDown, ChevronUp, Zap, Code, Database } from 'lucide-react';
+import { SiReact, SiPython, SiPhp } from 'react-icons/si';
+import { ExternalLink, ChevronDown, ChevronUp, Zap, Code } from 'lucide-react';
 
-const projects = [
+const projects: Array<{
+  title: string;
+  description: string;
+  tags: string[];
+  icon: React.ReactElement;
+  content: string;
+  features: string[];
+  status: StatusType;
+  gradient: string;
+  href?: string;
+}> = [
   {
     title: "ELLIE",
     description: "AI-powered e-commerce listing generator",
@@ -66,7 +77,9 @@ const cardVariants = {
   },
 };
 
-const StatusBadge = ({ status }) => {
+type StatusType = "Completed" | "Live" | "Educational";
+
+const StatusBadge = ({ status }: { status: StatusType }) => {
   const statusStyles = {
     "Completed": "bg-green-500/20 text-green-400 border-green-500/30",
     "Live": "bg-blue-500/20 text-blue-400 border-blue-500/30",
@@ -80,9 +93,8 @@ const StatusBadge = ({ status }) => {
   );
 };
 
-export const Projects = () => {
+export default function Projects() {
   const [expandedProject, setExpandedProject] = useState<number | null>(null);
-  const [hoveredCard, setHoveredCard] = useState<number | null>(null);
 
   return (
     <section id="projects" className="py-20 bg-gray-800 text-white relative overflow-hidden">
@@ -128,8 +140,6 @@ export const Projects = () => {
                 y: -8,
                 transition: { duration: 0.3 }
               }}
-              onHoverStart={() => setHoveredCard(index)}
-              onHoverEnd={() => setHoveredCard(null)}
               className="group relative"
             >
               <div className={`absolute inset-0 bg-gradient-to-br ${project.gradient} rounded-lg blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500`}></div>
@@ -270,4 +280,4 @@ export const Projects = () => {
       </div>
     </section>
   );
-};
+}

@@ -1,37 +1,15 @@
-import { motion, useAnimation } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { ArrowDown, Download, Eye, Github, Linkedin, Mail } from 'lucide-react';
-import { useEffect, useState } from 'react';
 
 export const Hero = () => {
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-  const [isVisible, setIsVisible] = useState(false);
-  const controls = useAnimation();
-
-  useEffect(() => {
-    setIsVisible(true);
-    controls.start("visible");
-  }, [controls]);
-
-  useEffect(() => {
-    const handleMouseMove = (e) => {
-      setMousePosition({
-        x: (e.clientX - window.innerWidth / 2) / 50,
-        y: (e.clientY - window.innerHeight / 2) / 50,
-      });
-    };
-
-    window.addEventListener('mousemove', handleMouseMove);
-    return () => window.removeEventListener('mousemove', handleMouseMove);
-  }, []);
-
-  const handleScrollToProjects = () => {
+  const handleScrollToProjects = (e: React.MouseEvent<HTMLButtonElement | HTMLDivElement>) => {
     const element = document.querySelector('#projects');
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
     }
   };
 
-  const handleDownloadResume = () => {
+  const handleDownloadResume = (e: React.MouseEvent<HTMLButtonElement>) => {
     const resumeUrl = '/balavanth_resume.pdf';
     const link = document.createElement('a');
     link.href = resumeUrl;
@@ -81,7 +59,6 @@ export const Hero = () => {
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           backgroundRepeat: 'no-repeat',
-          transform: `translate(${mousePosition.x}px, ${mousePosition.y}px)`,
         }}
         transition={{ type: "spring", stiffness: 100, damping: 20 }}
       />
@@ -261,7 +238,7 @@ export const Hero = () => {
       </motion.div>
 
       {/* Custom CSS for floating animation */}
-      <style jsx>{`
+      <style>{`
         @keyframes float {
           0%, 100% { transform: translateY(0px) rotate(0deg); }
           50% { transform: translateY(-20px) rotate(180deg); }
